@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/page/profile_page.dart';
-import 'package:kopicel/page/chat_page.dart';
+import 'package:kopicel/view/profile_page.dart';
+import 'package:kopicel/view/chat_page.dart';
 import 'package:kopicel/widgets/sparkling_widget.dart';
 import 'package:kopicel/widgets/frappuccino_widget.dart';
 import 'package:kopicel/widgets/coffee_widget.dart';
@@ -109,14 +109,12 @@ class _HomePageState extends State<HomePage>
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(
-                            0xff967259), // Mengubah warna border ketika input tidak aktif
+                        color: Color(0xff967259),
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(
-                            0xff967259), // Mengubah warna border ketika input aktif
+                        color: Color(0xff967259),
                       ),
                     ),
                   ),

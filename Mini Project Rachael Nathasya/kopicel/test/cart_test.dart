@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kopicel/page/cart_page.dart';
+import 'package:kopicel/view/cart_page.dart';
 
 void main() {
   testWidgets('CartPage', (WidgetTester tester) async {

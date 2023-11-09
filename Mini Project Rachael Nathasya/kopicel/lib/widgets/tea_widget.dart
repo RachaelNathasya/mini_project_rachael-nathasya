@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/screens/tea_item_screen.dart';
+import 'package:kopicel/viewmodel/tea_item_screen.dart';
 
 class TeaWidget extends StatelessWidget {
   List img = [

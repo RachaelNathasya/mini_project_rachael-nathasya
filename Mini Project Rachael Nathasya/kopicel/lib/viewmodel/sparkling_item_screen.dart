@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/page/cart_page.dart';
-import 'package:kopicel/page/favorite_page.dart';
+import 'package:kopicel/view/cart_page.dart';
+import 'package:kopicel/view/favorite_page.dart';
 
 List description = [
   'Apple sparkling beverages typically feature the crisp and refreshing flavor of apples. These drinks are often carbonated, providing a fizzy and invigorating experience. They are a popular choice for those who enjoy the natural sweetness and tanginess of apples in a sparkling form.',

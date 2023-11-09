@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:kopicel/chat_message_type.dart';
+import 'package:kopicel/model/chat_message_type.dart';
 import 'package:kopicel/widgets/chat_message_widget.dart';
 
 class ChatPage extends StatefulWidget {

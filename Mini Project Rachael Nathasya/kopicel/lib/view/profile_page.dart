@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/screens/login_screen.dart';
-import 'package:kopicel/screens/welcome_screen.dart';
+import 'package:kopicel/providers/user_provider.dart';
+import 'package:kopicel/viewmodel/account_screen.dart';
+import 'package:kopicel/view/login_screen.dart';
+import 'package:kopicel/view/welcome_screen.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -18,6 +21,8 @@ class ProfilePage extends StatelessWidget {
 class ProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context, listen: true);
+
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
@@ -27,7 +32,13 @@ class ProfileBody extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AccountScreen(),
+                ),
+              );
+            },
           ),
           ProfileMenu(
             text: "Notifications",
@@ -47,11 +58,17 @@ class ProfileBody extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () => logoutHandler(userProvider, context),
           ),
         ],
       ),
     );
+  }
+
+  void logoutHandler(UserProvider provider, BuildContext context) {
+    provider.user = null;
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 }
 
@@ -117,6 +134,9 @@ class ProfilePic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context, listen: true);
+    final user = userProvider.user;
+
     return SizedBox(
       height: 115,
       width: 115,
@@ -124,9 +144,9 @@ class ProfilePic extends StatelessWidget {
         fit: StackFit.expand,
         clipBehavior: Clip.none,
         children: [
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/Profile_image.jpg"),
-          ),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(user!.avatar)),
           Positioned(
             right: -16,
             bottom: 0,

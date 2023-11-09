@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/screens/sparkling_item_screen.dart';
+import 'package:kopicel/viewmodel/sparkling_item_screen.dart';
 
 class SparklingWidget extends StatelessWidget {
   List img = [

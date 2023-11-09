@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/chat_message_type.dart';
+import 'package:kopicel/model/chat_message_type.dart';
 
 class ChatMessageWidget extends StatelessWidget {
   final String text;

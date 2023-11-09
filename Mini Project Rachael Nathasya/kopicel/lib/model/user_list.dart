@@ -7,7 +7,6 @@ class UsersListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
-    // Membaca data pengguna
     final users = userProvider.users;
 
     return Scaffold(
@@ -20,7 +19,6 @@ class UsersListScreen extends StatelessWidget {
           final user = users[index];
           return ListTile(
             title: Text(user.email),
-            // Tambahkan tombol untuk menghapus atau memperbarui user
           );
         },
       ),

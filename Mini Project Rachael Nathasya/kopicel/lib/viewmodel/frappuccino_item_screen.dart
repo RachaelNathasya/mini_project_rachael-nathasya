@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/page/cart_page.dart';
-import 'package:kopicel/page/favorite_page.dart';
+import 'package:kopicel/view/cart_page.dart';
+import 'package:kopicel/view/favorite_page.dart';
 
-List deskripsi = [
-  'A classic coffee drink made by diluting a shot of espresso with hot water. It has a strong and bold flavor.',
-  'A sweet and creamy coffee beverage that combines espresso with steamed milk and butterscotch flavoring.',
-  'A popular Italian coffee drink made with equal parts of espresso, steamed milk, and milk foam. It has a rich and frothy texture.',
-  'A delightful coffee with espresso, steamed milk, and caramel syrup. Its known for its sweet and caramelized flavor.',
-  'A milder coffee beverage made with espresso and a larger amount of steamed milk, resulting in a creamy and balanced taste.',
-  'A delightful combination of espresso, steamed milk, and chocolate, giving it a rich and chocolaty flavor.',
-  'A sweet and fragrant coffee made by blending espresso with steamed milk and vanilla syrup.',
-  'This could be a special coffee unique to your establishment. It might have a local or signature flavor that sets it apart.',
-  'Gresso is not a common coffee term. It could be a special or unique coffee created by your coffee shop.',
-  'A unique and sweet coffee drink made with taro root flavoring. Its known for its purple color and sweet, nutty taste.',
-  'A delicious coffee combining espresso with steamed milk and Nutella, creating a delightful hazelnut-chocolate flavor.',
-  'A refreshing iced coffee with added coffee jelly cubes for a unique texture and taste.',
+List desc = [
+  ' A delightful frozen coffee drink with a rich and indulgent chocolate flavor. Its perfect for chocolate lovers who enjoy a refreshing coffee-based treat.',
+  'A refreshing and energizing frappuccino made with green tea. It offers a balance of earthy and slightly sweet flavors, often blended with ice for a cool, revitalizing experience.',
+  'A sweet and creamy frappuccino that combines the classic Oreo cookie flavor with coffee and ice. Its a popular choice for those who love cookies and cream desserts.',
+  'A dessert-like frappuccino inspired by the popular red velvet cake. It typically features a blend of red velvet cake flavors and coffee, resulting in a sweet and smooth drink.',
+  'A unique and sweet frappuccino made with taro root, a starchy and mildly nutty-flavored ingredient. It often includes coffee and provides a delightful, exotic taste.',
+  'A classic and timeless frappuccino flavor that combines the sweetness of vanilla with the richness of coffee. Its a crowd-pleaser known for its smooth and comforting taste.',
 ];
 
-class SingleCoffeeItemScreen extends StatelessWidget {
+class SingleFrappuccinoItemScreen extends StatelessWidget {
   String img;
   String price;
-  String deskripsi;
+  String desc;
 
-  SingleCoffeeItemScreen(this.img, this.price, this.deskripsi);
+  SingleFrappuccinoItemScreen(this.img, this.price, this.desc);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +43,7 @@ class SingleCoffeeItemScreen extends StatelessWidget {
                 SizedBox(height: 50),
                 Center(
                   child: Image.asset(
-                    "assets/coffee/$img.jpg",
+                    "assets/frappuccino/$img.jpg",
                     width: MediaQuery.of(context).size.width / 1.2,
                   ),
                 ),
@@ -82,7 +76,7 @@ class SingleCoffeeItemScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 20),
                       Text(
-                        "${deskripsi}",
+                        "${desc}",
                         style: TextStyle(
                           color: Colors.black,
                           letterSpacing: 3,
@@ -130,12 +124,12 @@ class SingleCoffeeItemScreen extends StatelessWidget {
                             },
                             child: Container(
                               padding: EdgeInsets.all(10),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.red,
-                                ),
+                              decoration: BoxDecoration(
+                                color: Color(0xff967259),
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: Icon(
+                                Icons.favorite_outline,
                               ),
                             ),
                           ),

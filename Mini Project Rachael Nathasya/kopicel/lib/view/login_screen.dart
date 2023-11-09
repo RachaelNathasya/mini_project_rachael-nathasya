@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kopicel/home.dart';
-import 'package:kopicel/model/user_model.dart';
-import 'package:kopicel/model/user_provider.dart';
+import 'package:kopicel/providers/user_provider.dart';
+import 'package:kopicel/viewmodel/registrasi_screen.dart';
+import 'package:kopicel/services/user_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,17 +16,10 @@ class _LoginScreenState extends State<LoginScreen> {
   final passController = TextEditingController();
   bool passToggle = true;
 
-  final validEmail = "kopicel@gmail.com";
-  final validPassword = "123456";
-
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-    userProvider
-        .addUser(User(id: '1', email: 'kopicel@gmail.com', password: '123456'));
-    userProvider.updateUser('1',
-        User(id: '1', email: 'newemail@example.com', password: 'newpassword'));
-    userProvider.deleteUser('1');
+    UserProvider? userProvider =
+        Provider.of<UserProvider>(context, listen: true);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -46,21 +40,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Email",
                     labelStyle: TextStyle(
-                      color: Color(0xff967259), // Mengubah warna label text
+                      color: Color(0xff967259),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(
-                            0xff967259), // Mengubah warna border ketika input tidak aktif
+                        color: Color(0xff967259),
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: Color(
-                            0xff967259), // Mengubah warna border ketika input aktif
+                        color: Color(0xff967259),
                       ),
                     ),
                     prefixIcon: Icon(
@@ -120,28 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 60),
                 InkWell(
-                  onTap: () {
-                    if (_formfield.currentState!.validate()) {
-                      // Memeriksa email dan password
-                      if (emailController.text == validEmail &&
-                          passController.text == validPassword) {
-                        // Jika email dan password benar, pindah ke halaman home
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Home(),
-                          ),
-                        );
-                      } else {
-                        // Jika email atau password salah, tampilkan pesan kesalahan
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Email atau password salah."),
-                          ),
-                        );
-                      }
-                    }
-                  },
+                  onTap: () => tapLoginHandler(userProvider),
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
@@ -169,13 +140,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const RegistrasiScreen(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ],
@@ -184,5 +163,23 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void tapLoginHandler(UserProvider provider) async {
+    if (_formfield.currentState!.validate()) {
+      final email = emailController.text;
+      final password = passController.text;
+
+      final result = await UserApi.verifyUser(email, password);
+
+      if (result != null) {
+        provider.user = result;
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Email atau password salah.')));
+      }
+    }
   }
 }

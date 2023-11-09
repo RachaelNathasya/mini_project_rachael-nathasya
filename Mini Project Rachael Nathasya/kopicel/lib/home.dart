@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/page/cart_page.dart';
-import 'package:kopicel/page/favorite_page.dart';
-import 'package:kopicel/page/home_page.dart';
-import 'package:kopicel/page/profile_page.dart';
+import 'package:kopicel/view/cart_page.dart';
+import 'package:kopicel/view/favorite_page.dart';
+import 'package:kopicel/view/home_page.dart';
+import 'package:kopicel/view/profile_page.dart';
 
 class Home extends StatefulWidget {
   @override

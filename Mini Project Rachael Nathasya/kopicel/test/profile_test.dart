@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kopicel/page/profile_page.dart';
-import 'package:kopicel/screens/login_screen.dart';
-import 'package:kopicel/screens/welcome_screen.dart';
+import 'package:kopicel/view/profile_page.dart';
+import 'package:kopicel/view/login_screen.dart';
+import 'package:kopicel/view/welcome_screen.dart';
 
 void main() {
   testWidgets('ProfilePage', (WidgetTester tester) async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kopicel/page/cart_page.dart';
-import 'package:kopicel/page/favorite_page.dart';
+import 'package:kopicel/view/cart_page.dart';
+import 'package:kopicel/view/favorite_page.dart';
 
 List descript = [
   'Iced tea is a refreshing beverage made by brewing tea and then cooling it down with ice. It can be served sweetened or unsweetened and is often garnished with lemon or other fruits.',
