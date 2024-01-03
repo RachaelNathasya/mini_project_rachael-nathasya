@@ -16,6 +16,7 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Account'),
+        backgroundColor: Color(0xff967259),
       ),
       body: Center(
         child: Column(
